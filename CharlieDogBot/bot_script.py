@@ -37,10 +37,10 @@ def follow_followers(api):
 
 def tweet(api):
     while True:
-        if datetime.now().strftime("%H:%M") == "15:00":
+        if datetime.now().strftime("%H:%M") == "23:00":
             logger.info("Tweeting")
-            file = os.listdir(os.getcwd())[random.randint(1, len(os.listdir(os.getcwd())))]
-            api.update_with_media(os.getcwd() + "/" + file, status="bark bark\n\n" + str(date.today()))
+            file = random.choice(os.listdir(os.getcwd() + "/images/"))
+            api.update_with_media(os.getcwd() + "/images/" + file, status="bark bark\n\n" + str(date.today()))
         logger.info("Waiting on tweeting...")
         time.sleep(60)
 
@@ -60,8 +60,9 @@ def reply_thread(api):
         since_id = reply(api, since_id)
         logger.info("Waiting on mentions...")
         time.sleep(60)
-
-api.update_with_media(os.getcwd() + "/charlie.jpg", status="bark bark\n\n" + str(date.today()))
+        
+logging.info(os.listdir(os.getcwd() + "/images/"))
+api.update_with_media(os.getcwd() + "/images/charlie.jpg", status="bark bark\n\n" + str(date.today()))
 
 threads = list()
 

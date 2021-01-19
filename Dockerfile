@@ -1,7 +1,7 @@
 FROM python:3.7-alpine
 
 COPY CharlieDogBot/bot_script.py /bots/
-COPY CharlieDogBot/images /bots/
+COPY CharlieDogBot/images /bots/images/
 COPY requirements.txt /tmp
 RUN pip3 install -r /tmp/requirements.txt
 
